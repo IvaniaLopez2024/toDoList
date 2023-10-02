@@ -16,8 +16,14 @@ taskForm.addEventListener("submit", function (e) {
     taskItem.innerHTML = `
         <h3>${taskTitle}</h3>
         <p>${taskDescription}</p>
-        <button class="complete-button">Completar</button>
+         <button class="complete-button">Completar</button>
         <button class="delete-button">Eliminar</button>
+    `;
+     
+    const botonEliminar = document.createElement("button");
+    botonEliminar.innerHTML= `
+    <button class="complete-button">Completar</button>
+    <button class="delete-button">Eliminar</button>
     `;
 
     taskList.appendChild(taskItem);
@@ -25,3 +31,22 @@ taskForm.addEventListener("submit", function (e) {
     // Limpiar el formulario
     taskForm.reset();
 });
+
+function guardar() {
+    const task = document.getElementById('taskInput').value;
+    localStorage.setItem('mitask', task);
+    mostrarTaskGuardada();
+}
+
+function mostrarTaskGuardada() {
+    const taskGuardada = localStorage.getItem('mitask');
+    if (task) {
+        document.getElementById('Taskguardada').textContent = 'Task guardada: ' + taskGuardada;
+    } else {
+        document.getElementById('Taskguardada').textContent = 'No hay dato guardado.';
+    }
+}
+
+mostrarTaskGuardada();
+
+
