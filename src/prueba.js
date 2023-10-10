@@ -1,7 +1,5 @@
 const taskForm = document.getElementById("task-form");
 const taskList = document.getElementById("task-list");
-
-
 taskForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -32,16 +30,25 @@ taskForm.addEventListener("submit", function (e) {
     `;
 
     const completeButton = taskItem.querySelector(".complete-button");
-    const deleteButton = taskItem.querySelector(".delete-button");
+const deleteButton = taskItem.querySelector(".delete-button");
 
-    completeButton.addEventListener("click", function () {
-        
-    
-    });
+completeButton.addEventListener("click", function () {
+    // Agregar aquí la lógica para marcar la tarea como completada
+    // Por ejemplo, puedes cambiar el estilo de la tarea o agregar una marca de completado
+    taskItem.classList.add("completed");
+});
 
-    deleteButton.addEventListener("click", function () {
-        taskList.removeChild(taskItem);
-    });
+deleteButton.addEventListener("click", function () {
+    // Agregar aquí la lógica para eliminar la tarea
+    taskList.removeChild(taskItem);
+
+    // También puedes eliminar la tarea del objeto 'list' si lo estás utilizando
+    const taskId = taskItem.id;
+    if (list[taskId]) {
+        delete list[taskId];
+    }
+});
+
 
     taskList.appendChild(taskItem);
 
@@ -49,6 +56,5 @@ taskForm.addEventListener("submit", function (e) {
     taskForm.reset();
 
 });
-
 
 
